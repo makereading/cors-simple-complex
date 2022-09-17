@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Checking Preflight</title>
+
+	<script>
+		function complexreq() {
+			fetch('https://jsonplaceholder.typicode.com/posts', {
+			  method: 'POST',
+			  body: JSON.stringify({
+			    title: 'foo',
+			    body: 'bar',
+			    userId: 1,
+			  }),
+			  headers: {
+			    'Content-type': 'application/json; charset=UTF-8',
+			  },
+			})
+			  .then((response) => response.json())
+			  .then((json) => console.log(json));
+		}
+
+		function simplereq(){
+			fetch('https://jsonplaceholder.typicode.com/posts/1')
+			  .then((response) => response.json())
+			  .then((json) => console.log(json));
+		}
+ 	</script>
+
+</head>
+<body>
+
+	<div>
+		<button onclick="simplereq()">Simple Request</button>
+		<button onclick="complexreq()">Complex Request</button>
+	</div>
+
+</body>
+</html>
